@@ -1,10 +1,10 @@
-%bcond_without bootstrap
+%bcond_with bootstrap
 %global packname  car
 %global rlibdir  %{_datadir}/R/library
 
 Name:             R-%{packname}
 Version:          2.0_12
-Release:          1
+Release:          2
 Summary:          Companion to Applied Regression
 Group:            Sciences/Mathematics
 License:          GPL (>= 2)
@@ -12,16 +12,20 @@ URL:              http://cran.r-project.org/web/packages/%{packname}/index.html
 Source0:          http://cran.r-project.org/src/contrib/%{packname}_2.0-12.tar.gz
 BuildArch:        noarch
 Requires:         R-core
-Requires:         R-stats R-graphics R-MASS R-nnet 
+Requires:         R-stats R-graphics R-MASS R-nnet
 %if %{with bootstrap}
 Requires:         R-leaps R-lme4 R-nlme R-mgcv R-rgl R-survival
 %else
-Requires:         R-alr3 R-leaps R-lme4 R-lmtest R-nlme R-sandwich R-mgcv R-rgl R-survival R-survey 
+Requires:         R-alr3 R-leaps R-lme4 R-lmtest R-nlme R-sandwich R-mgcv
+Requires:         R-rgl R-survival R-survey
 %endif
-BuildRequires:    R-devel Rmath-devel texlive-collection-latex R-stats R-graphics R-MASS R-nnet
+BuildRequires:    R-devel Rmath-devel texlive-collection-latex R-stats
+BuildRequires:    R-graphics R-MASS R-nnet
 %if %{with bootstrap}
-%else
 BuildRequires:    R-leaps R-lme4 R-nlme R-mgcv R-rgl R-survival
+%else
+BuildRequires:    R-alr3 R-leaps R-lme4 R-lmtest R-nlme R-sandwich R-mgcv
+BuildRequires:    R-rgl R-survival R-survey
 %endif
 %rename R-cran-car
 
