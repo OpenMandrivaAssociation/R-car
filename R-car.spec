@@ -4,7 +4,7 @@
 
 Name:             R-%{packname}
 Version:          2.0_12
-Release:          2
+Release:          3
 Summary:          Companion to Applied Regression
 Group:            Sciences/Mathematics
 License:          GPL (>= 2)
